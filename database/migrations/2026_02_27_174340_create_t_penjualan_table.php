@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('m_user', function (Blueprint $table) {
-            $table->id('user_id');
+        Schema::create('t_penjualan', function (Blueprint $table) {
+            $table->id('penjualan_id');
 
             // indexing fk
-            $table->unsignedBigInteger('level_id')->index(); 
+            $table->unsignedBigInteger('user_id')->index(); 
 
-            $table->string('username', 20)->unique();
-            $table->string('nama', 100);
-            $table->string('password');
+            $table->string('pembeli', 50);
+            $table->string('penjualan_kode', 20)->unique(); 
+            $table->dateTime('penjualan_tanggal');
             $table->timestamps();
 
             // mendefinisikan fk
-            $table->foreign('level_id')->references('level_id')->on('m_level');
+            $table->foreign('user_id')->references('user_id')->on('m_user');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('m_user');
+        Schema::dropIfExists('t_penjualan');
     }
 };
