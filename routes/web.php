@@ -30,3 +30,7 @@ Route::get('/level', [LevelController::class, 'index']);
 
 // Kategori
 Route::get('/kategori', [KategoriController::class, 'index']);
+
+// User
+Route::get('/user', [UserController::class, 'index']);
+
